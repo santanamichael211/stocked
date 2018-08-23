@@ -3,7 +3,6 @@ import Stock from "./stock"
 import axios from "axios";
 import './stocklist.css';
 import symbols from '../json/symbols.json';
-import myKeys from '../json/myKeys.json';
 import * as Scroll from 'react-scroll';
 import {animateScroll as scroll, scrollSpy} from 'react-scroll'
 
