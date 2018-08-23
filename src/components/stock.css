@@ -1,0 +1,161 @@
+.stockEle{
+  display: inline-block;
+  margin:1em;
+  border-radius: 1px;
+  box-shadow: 0px 1px 3px black;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.stockEle:hover{
+
+}
+
+.up{
+  color:#4BB543;
+}
+
+.down{
+  color:#FF2323;
+}
+
+.blue{
+  color: dodgerblue;
+}
+
+.green{
+  background-color:rgba(75, 182, 67, 0.40);
+}
+
+.red{
+    background-color:rgba(255, 35, 35, 0.4);
+}
+
+table{
+  border: solid 1px #666;
+  font-size:.7em;
+  width:100%;
+}
+
+table tbody tr td{
+  transition:box-shadow .5s, background-color .5s, color .4s;
+  text-align: center;
+}
+
+.orange{
+  color:#FF7900;
+}
+
+.top-row{
+  border:solid 1px #666;
+}
+
+table tbody tr td:hover{
+  box-shadow: 1px 1px 1px black;
+  background-color: dodgerblue;
+  color:white;
+}
+
+
+#stockChart{
+  height:20em;width:100%;
+
+}
+
+#stockChart:active{
+  transform: scale(1.7);
+}
+
+.time{
+  font-size:.7em;
+  font-weight: 100;
+  margin:0;
+  padding: 0;
+  text-align: center;
+}
+
+.info-div{
+  position: absolute;
+  height:20px;
+  background: rgba(245, 245, 245, 0.45);
+  width: 100%;
+  font-size:1rem;
+}
+
+
+.chart-container{
+height:270px;
+border-radius: 5px;
+position: relative;
+}
+
+.tooltip{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.tooltip .tooltiptext{
+    visibility: hidden;
+    opacity:0;
+    width: 60px;
+    background-color: rgba(245, 245, 245, 0.90);;
+    color: dodgerblue;
+    text-align: center;
+    bottom:100%;
+    left:50%;
+    margin-left: -30px;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+
+    transition: opacity .5s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.switch-button{
+  padding:.5em;
+  float: right;
+  border:none;
+  outline:none;
+  text-align: left;
+  background-color:rgba(31, 143, 255, 0.2);
+  color:#333;
+  transition:background-color .5s;
+    cursor: pointer;
+}
+
+.delete-button{
+  padding:.5em;
+  float: left;
+  border:none;
+  outline:none;
+  text-align: left;
+  background-color:rgba(255,35,35,.2);
+  color:#333;
+  transition:background-color .5s;
+  cursor: pointer;
+}
+
+.delete-button:hover{
+  background-color:rgba(255,35,35,1);
+}
+
+
+.switch-button:focus{
+  background-color:rgba(31, 143, 255, 1);
+}
+
+
+.switch-button:hover{
+  background-color:rgba(31, 143, 255, 1);
+}
+
+
+@keyframes rumble {
+ 100%{transform:rotate(360deg);}
+}

@@ -1,0 +1,225 @@
+.App {
+  margin:0;
+  padding:0;
+  background:white;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
+
+nav{
+  margin: 0;
+  padding:.8em;
+  margin-bottom: .4em;
+  background:#FAFAFA;
+  box-shadow:3px 0 3px black;
+}
+
+nav a{
+  color:black;
+}
+
+nav h1{
+  margin: 0;
+  padding:0;
+  margin-left: -3px;
+  text-align: left;
+  display: inline-block;
+  letter-spacing: -3px;
+  color: #0D3B66;
+}
+
+nav h1:hover{
+animation: rainbow 7s linear;
+animation-iteration-count:infinite;
+}
+
+footer{
+  text-align: center;
+  margin: 0;
+  padding:.8em;
+  background:#FAFAFA;
+  box-shadow:3px 0 3px black;
+}
+
+footer h1{
+  display: inline;
+}
+
+footer h1 i {
+  padding-right: .5em;
+  color:#00d8ff;
+  font-size:2em;
+  display: inline;
+}
+
+.react{
+  color:#00d8ff;
+  text-decoration: none;
+}
+
+
+
+#wrapper{
+  width: 100%;
+  height:540px;
+}
+
+
+#information-div{
+  background: linear-gradient(to right,rgba(0,0,0,.5), rgba(0,0,0,.7), transparent), url("./images/background.jpg") no-repeat center;
+  background-size: cover;
+  height:100%;
+}
+
+.alphavantage-link{
+  text-decoration: none;
+  color:#42DCA3;
+  transition: opacity .5s;
+}
+
+.alphavantage-link:hover{
+opacity:.5;
+}
+
+
+#header{
+  margin:0;
+  padding-top:4rem;
+  text-align: center;
+  font-size:5rem;
+  color:#FAFAFA;
+  letter-spacing:5px;
+  text-shadow: 0px 0px 10px white;
+}
+
+.header-text{
+  color:white;
+  text-align: center;
+  font-size: 1.5rem;
+  letter-spacing:2px;
+}
+
+.go-to-btn{
+width:250px;
+margin-left: 45%;
+transform: translateX(-125px);
+padding: 25px;
+border:none;
+font-family: 'Ubuntu', sans-serif;
+font-size: 1.5rem;
+background:dodgerblue;
+opacity:.3;
+color: white;
+transition:opacity .5s;
+cursor: pointer;
+}
+
+.go-to-btn:hover{
+  opacity:1;
+}
+
+#tutorial-div{
+  height:950px;
+  background-color: #FAFAFA;
+}
+
+#tutorial-div section{
+  padding:100px;
+  width:50%;
+  display: inline-block;
+  float:left;
+
+}
+
+#tutorial-div section::after{
+  clear:left;
+}
+
+#tutorial-div section p{
+  width:50%;
+  text-align: justify;
+  letter-spacing: 1px;
+  color: #2B4162;
+  font-size: 20px;
+  line-height: 28px;
+  margin-left:20%;
+  margin-bottom: 100px;
+}
+
+#tutorial-div section a{
+  text-decoration: none;
+  color:#42DCA3;
+  transition: opacity .5s;
+}
+
+#tutorial-div section a:hover{
+opacity:.5;
+}
+
+
+#tutorial-div aside{
+  width:30%;
+  display: inline-block;
+  float:left;
+}
+
+
+#section-head{
+  display: block;
+  margin:auto;
+  margin-left:15%;
+  font-size:3rem;
+  letter-spacing: 8px;
+  color: #0D3B66;
+}
+
+#section-head h1,h2{
+  display:inline;
+}
+
+#section-head h1{
+  font-size:2em;
+}
+
+#tutorial-div aside img{
+  display: block;
+  padding:20px 10px;
+}
+
+.alpha{
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
+  display: inline;
+}
+
+.vantage{
+  font-size: 20px;
+  line-height: 28px;
+  display: inline;
+  font-weight: lighter;
+}
+
+
+
+.dollar{
+  display:inline-block;
+  color:dodgerblue;
+  font-size: 2.5em;
+  animation: rainbow 7s linear;
+  animation-iteration-count:infinite;
+  margin:0;
+  padding:0;
+  text-align: left;
+}
+
+
+@keyframes rainbow {
+  0%{color:dodgerblue;}
+  20%{color:red;}
+  40%{color:orange;}
+  60%{color:yellow;}
+  80%{color:green;}
+  100%{color:dodgerblue;}
+}

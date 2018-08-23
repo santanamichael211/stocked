@@ -1,0 +1,129 @@
+#stock-list{
+  font-family: 'Ubuntu', sans-serif;
+  margin:0 auto;
+  background-color:#FFFFFF;
+  clear:left;
+
+}
+
+#stock-list input{
+display: inline-block;
+height:3em;
+}
+
+.form-div{
+  width:30vw;
+  margin: auto;
+  padding:.5em;
+  background:white;
+  box-shadow: 0 0 20px #0D3B66;
+  border-left: 10px solid #0D3B66;
+  margin-bottom: 1em;
+  position: relative;
+}
+
+.form-div i{
+  display: inline-block;
+  font-size:1em;
+  background: transparent;
+  margin:0;position: absolute;
+  left:0;
+  top:6;
+  padding: 1em;
+
+}
+
+#stocklist-container{
+  background:#FFFFFF;
+  padding:1em;
+  padding-top: 0;
+
+}
+
+#search{
+  outline:none;
+  font-style: italic;
+  border:none;
+  display: inline-block;
+  width: 90%;;
+  margin-left: .6em;
+  padding-left: 1em;
+  font-size: 1em;
+  transition: border .3s;
+  outline:none;
+  text-align: center;
+  letter-spacing: .3px;
+}
+
+#search-list{
+  overflow:auto;
+  max-height:20em;
+  transition: max-height 1s;
+  padding:2em;
+  width:100%;
+  background:#FFFFFF;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 5px solid #0D3B66;
+  border-bottom: 5px solid #0D3B66;
+}
+
+
+.searchele-container{
+  display: inline-block;
+  width:7vw;
+  height:7vw;
+  overflow:hidden;
+  padding:.3em;
+  margin:.3em;
+  background-color: #FAFAFA;
+  box-shadow: 0 0 5px #0D3B66;
+  transition:.5s;
+  text-align: center;
+  border-top:3px solid;
+  opacity: 0;
+  animation:fadeIn .3s linear;
+  animation-fill-mode: forwards;
+
+}
+
+.searchele-container:hover{
+  transform:scale(1.5);
+
+}
+
+.searchele-container h4{
+  display: inline-block;
+  font-size: .6em;
+  cursor: pointer
+}
+
+
+.searchele-container h4:hover{
+color:#FF7900;
+}
+
+.hide{
+  opacity:  0;
+  transition: opacity .5s;
+}
+
+.show{
+  opacity:  1;
+  transition: opacity .5s;
+}
+
+.total{
+  text-align: center;
+  background:#FAFAFA;
+  width:10%;
+  margin: 0 auto;
+  padding: 1em;
+  color: #0D3B66;
+  box-shadow: 0 1px 5px #0D3B66;
+  font-size:1.2em;
+}
+
+@keyframes fadeIn {
+  100%{opacity:1}
+}
