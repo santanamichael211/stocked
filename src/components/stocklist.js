@@ -52,7 +52,7 @@ class StockList extends Component {
   callStock = (symbol) =>{
 
   let data = {};
-  let key = myKeys.key;
+  let key = process.env.API_KEY;
 
 //--- Api Fetch
   axios.get("https://www.alphavantage.co/query?apikey="+key+"&function=TIME_SERIES_DAILY_ADJUSTED&symbol="+symbol.toUpperCase())
