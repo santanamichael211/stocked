@@ -4,11 +4,13 @@
   border-radius: 1px;
   box-shadow: 0px 1px 3px black;
   font-family: 'Ubuntu', sans-serif;
+  width:99%;
 }
 
-.stockEle:hover{
 
-}
+
+
+
 
 .up{
   color:#4BB543;
@@ -127,6 +129,7 @@ position: relative;
   color:#333;
   transition:background-color .5s;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .delete-button{
@@ -139,6 +142,7 @@ position: relative;
   color:#333;
   transition:background-color .5s;
   cursor: pointer;
+    font-weight: bold;
 }
 
 .delete-button:hover{

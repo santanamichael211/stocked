@@ -14,11 +14,7 @@ class Stock extends Component {
   }
 
   componentDidMount(){
-    var ctx = this.refs.canvas.getContext("2d");
-      this.setState({chart:new Chart(ctx)},()=>{
-              this.updateCanvas("daily");
-          })
-
+    this.updateCanvas("daily");
   }
 
 static setColor(){
@@ -63,7 +59,7 @@ var Colors = {
 
     this.setState({currentDisplay:span},() => {
 
-      this.state.chart.destroy();
+      if(this.state.chart!=null)this.state.chart.destroy();
 
       var ctx = this.refs.canvas.getContext("2d");
 
@@ -80,12 +76,18 @@ var Colors = {
               labels:labels,
               datasets:[{
                 label: this.props.symbol,
-                backgroundColor: bgColor,
-                borderColor: "whitesmoke",
+                backgroundColor: "transparent",
+                borderColor: bgColor,
+                borderWidth:.8,
                 data: data,
               }]
             },
             options:{
+
+              elements: {
+                line:{tension:0},
+                point: { radius:0,hitRadius: 3, hoverRadius: 3 }
+              },
               cubicInterpolationMode:"monotone",
               maintainAspectRatio: false,
               legend: {
@@ -94,7 +96,13 @@ var Colors = {
               scales:{
                 yAxes:[{
                   ticks:{
+                    fontSize:9,
                 maxTicksLimit: 20
+                  }
+                }],
+                xAxes:[{
+                  ticks:{
+                    fontSize:9
                   }
                 }]
               }
@@ -108,27 +116,24 @@ var Colors = {
 //-------------- change points to weekly dataset
 
 setWeek = () =>{
-  this.setState({currentDisplay:"week"}, () =>{
-    this.updateCanvas("week");
-  })
-
+this.updateCanvas("week");
 }
 
 
 
 //-------------- change points to daily dataset
 setDay = () =>{
-  this.setState({currentDisplay:"daily"}, () =>{
-    this.updateCanvas("daily");
-  })
-
+  this.updateCanvas("daily");
 }
 
 //-------------- change points to monthly dataset
 setMonth = () =>{
-  this.setState({currentDisplay:"month"}, () =>{
-    this.updateCanvas("month");
-  })
+  this.updateCanvas("month");
+
+}
+
+setYear = () =>{
+  this.updateCanvas("year");
 
 }
 
@@ -141,60 +146,103 @@ loadData = () =>{
 
   //----- daily data points start
   if(this.state.currentDisplay === "daily"){
-    data = [this.props.data[0].open,this.props.data[0].high,this.props.data[0].low,this.props.data[0].close];
-    labels = ["Open","High", "Low","Close"];
+   var temp = this.props.data.intraday.data;
+    for(var i = temp.length -1; i>=0;i--){
+      data.push(temp[i]["1. open"]);
+      labels.push(temp[i].name.split(" ")[1]+ " open");
+      data.push(temp[i]["2. high"]);
+      labels.push(temp[i].name.split(" ")[1]+ " high");
+      data.push(temp[i]["3. low"]);
+      labels.push(temp[i].name.split(" ")[1]+ " low");
+      data.push(temp[i]["4. close"]);
+      labels.push(temp[i].name.split(" ")[1]+ " close");
+
+    }
   }
   //----- daily data points end
 
   //----- weeky data points start
   if(this.state.currentDisplay === "week") {
-    var days = ["","Mon","Tues","Wed","Thurs","Fri"];
-    var today = new Date().getDay();
-    if(today=== 6 || today=== 0) today = 5;
+    var days = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
 
-    for(var i = 4; i>=0; i--){
-      today++;
-      if(today>=6) today = 1;
-      data.push(this.props.data[i].open);
-      labels.push(days[today] +" open");
-      data.push(this.props.data[i].high);
-      labels.push(days[today]);
-      data.push(this.props.data[i].low);
-      labels.push(days[today]);
-      data.push(this.props.data[i].close);
-      labels.push(days[today] +" close");
+    var intraday =  this.props.data.intraday.data.slice().reverse();
+    var weekly = this.props.data.weekly.data;
+    var total = intraday.concat(weekly);
+    var reg = /(-)/gi;
 
+    for(var j = total.length-1; j>=0;j--){
+      var timeString = total[j].name.split(" ")[1];
+      var dateString = total[j].name.split(" ")[0];
+      var date = new Date(dateString.replace(reg," "));
+      var day = days[date.getDay()];
+
+      data.push(total[j]["1. open"]);
+      labels.push(day+timeString+" open");
+      data.push(total[j]["2. high"]);
+      labels.push(day+timeString+" high")
+      data.push(total[j]["3. low"]);
+      labels.push(day+timeString+" low")
+      data.push(total[j]["4. close"]);
+      labels.push(day+timeString+" close")
     }
+
   }
   //----- weeky data points end
 
   //----- Monthly data points start
   if(this.state.currentDisplay === "month"){
     var months = ["Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."];
-    var startDay = new Date();
-    startDay.setDate(startDay.getDate());
+
+    var total = this.props.data.monthly.data.slice()
+    var reg = /(-)/gi;
+
+
 
     var dataPoints = 0;
-    if(this.props.data.length<30) dataPoints = this.props.data.length;
+    if(this.props.data.monthly.data.length<30) dataPoints = this.props.data.monthly.data.length;
     else{dataPoints=30;}
 
-    for(var j = dataPoints - 1; j>=0; j--){
-      if(startDay.getDay() === 0) startDay.setDate(startDay.getDate() - 2);
-      if(startDay.getDay() === 6) startDay.setDate(startDay.getDate() - 1);
-      data.push(this.props.data[j].open);
-      labels.push(months[startDay.getMonth()] + " " + startDay.getDate() +" open");
-      data.push(this.props.data[j].high);
-      labels.push(months[startDay.getMonth()] + " " + startDay.getDate());
-      data.push(this.props.data[j].low);
-      labels.push(months[startDay.getMonth()] + " " + startDay.getDate());
-      data.push(this.props.data[j].close);
-      labels.push(months[startDay.getMonth()] + " " + startDay.getDate() +" close");
-      startDay.setDate(startDay.getDate() - 1);
+    for(var k = total.length-(1+dataPoints); k<total.length;k++){
+      var dateString = total[k].name;
+      var date = new Date(dateString.replace(reg," "));
+      var month = months[date.getMonth()];
+      var day = date.getDate()
+
+      data.push(total[k]["1. open"]);
+      labels.push(month+" "+day+" open");
+      data.push(total[k]["2. high"]);
+      labels.push(month+" "+day+" high");
+      data.push(total[k]["3. low"]);
+      labels.push(month+" "+day+" low");
+      data.push(total[k]["4. close"]);
+      labels.push(month+" "+day+" close");
     }
-    labels = labels.reverse();
+
   }
 
-  //----- Monthly data points end
+    //----- Monthly data points end
+
+    //------ Yearly data points start
+  if(this.state.currentDisplay === "year"){
+    var months = ["Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."];
+
+    var total = this.props.data.monthly.data.slice();
+
+    for(var l = 0; l<total.length;l++){
+      var dateString = total[l].name;
+
+      data.push(total[l]["1. open"]);
+      labels.push(dateString+" open");
+      data.push(total[l]["2. high"]);
+      labels.push(dateString+" high");
+      data.push(total[l]["3. low"]);
+      labels.push(dateString+" low");
+      data.push(total[l]["4. close"]);
+      labels.push(dateString+" close");
+    }
+
+  }
+  //------ Yearly data points end
 
   return {
     data:data,
@@ -207,25 +255,28 @@ loadData = () =>{
 
 
 
-
+//<button className="delete-button" onClick={this.props.delete.bind(this,this.props.symbol)}>&times;</button>
 
 //-- rendering below
 
   render() {
 
+
     var classes = "";
-    var perChange = ((parseFloat(this.props.close) - parseFloat(this.props.open))/parseFloat(this.props.open)) * 100;
-    if(this.props.open<this.props.close){ classes += "green"; }
-    else {classes+= "red";}
+    var perChange = (parseFloat(this.props.data.intraday.data[0]["4. close"]) - parseFloat(this.props.data.weekly.data[0]["4. close"]))/parseFloat(this.props.data.weekly.data[0]["4. close"]);
+    perChange *= 100;
+   if(perChange>0){ classes += "green"; }
+   else {classes+= "red";}
 
     return (
       <div className="stockEle">
         <div className="chart-container">
         <div className="info-div">
-          <button className="switch-button" onClick={this.setMonth}>M</button>
-          <button className="switch-button" onClick={this.setWeek}>W</button>
-          <button className="switch-button" onClick={this.setDay}>D</button>
-          <button className="delete-button" onClick={this.props.delete.bind(this,this.props.symbol)}>X</button>
+          <button className="switch-button" onClick={this.setYear}>1Y</button>
+          <button className="switch-button" onClick={this.setMonth}>1M</button>
+          <button className="switch-button" onClick={this.setWeek}>5D</button>
+          <button className="switch-button" active onClick={this.setDay}>1D</button>
+          <button className="delete-button" onClick={this.props.delete.bind(this,this.props.data.symbol)}>&times;</button>
         </div>
         <canvas ref="canvas" id="stockChart" className={classes}></canvas>
         </div>
@@ -237,19 +288,21 @@ loadData = () =>{
             <td className="top-row"><div className="tooltip"><span className="tooltiptext">Highest Value</span><i className="fas fa-long-arrow-alt-up up"></i></div></td>
             <td className="top-row"><div className="tooltip"><span className="tooltiptext">Lowest Value</span><i className="fas fa-long-arrow-alt-down down"></i></div></td>
             <td className="top-row"><div className="tooltip"><span className="tooltiptext">Closing Value</span><i className="fas fa-door-closed orange"></i></div></td>
+            <td className="top-row"><div className="tooltip"><span className="tooltiptext">Volume</span><i className="fas fa-archive orange"></i></div></td>
             <td className="top-row"><div className="tooltip"><span className="tooltiptext">Percent Change</span><i className="fas fa-percent orange"></i></div></td>
             </tr>
             <tr>
-              <td>{this.props.symbol}</td>
-              <td>${parseFloat(this.props.open)}</td>
-              <td>${parseFloat(this.props.high)}</td>
-              <td>${parseFloat(this.props.low)}</td>
-              <td>${parseFloat(this.props.close)}</td>
-              <td className={classes}>{perChange.toFixed(3)}%</td>
+              <td>{this.props.data.symbol}</td>
+              <td>{this.props.data.intraday.data[0]["1. open"]}</td>
+              <td>{this.props.data.intraday.data[0]["2. high"]}</td>
+              <td>{this.props.data.intraday.data[0]["3. low"]}</td>
+              <td>{this.props.data.intraday.data[0]["4. close"]}</td>
+              <td>{this.props.data.intraday.data[0]["5. volume"]}</td>
+              <td className={classes}>%{perChange.toFixed(3)}</td>
             </tr>
           </tbody>
         </table>
-        <h5 className="time">Date Displayed: {this.props.time} </h5>
+        <h5 className="time">Date Displayed: {this.props.data.intraday.data[0].name} </h5>
       </div>
     );
   }

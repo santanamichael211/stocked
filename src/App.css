@@ -27,6 +27,7 @@ nav h1{
   display: inline-block;
   letter-spacing: -3px;
   color: #0D3B66;
+
 }
 
 nav h1:hover{
@@ -62,7 +63,7 @@ footer h1 i {
 
 #wrapper{
   width: 100%;
-  height:540px;
+  height:840px;
 }
 
 
@@ -70,6 +71,12 @@ footer h1 i {
   background: linear-gradient(to right,rgba(0,0,0,.5), rgba(0,0,0,.7), transparent), url("./images/background.jpg") no-repeat center;
   background-size: cover;
   height:100%;
+}
+
+#information-div p{
+  width:50%;
+  text-align: center;
+  margin:auto;
 }
 
 .alphavantage-link{
@@ -85,25 +92,32 @@ opacity:.5;
 
 #header{
   margin:0;
-  padding-top:4rem;
+  padding-top:10rem;
   text-align: center;
   font-size:5rem;
   color:#FAFAFA;
-  letter-spacing:5px;
-  text-shadow: 0px 0px 10px white;
+  letter-spacing:10px;
+  text-shadow: 0 0 15px #FAFAFA
+}
+
+#header span{
+  font-size:8rem;
+  animation: rainbow 7s linear;
+  animation-iteration-count:infinite;
 }
 
 .header-text{
   color:white;
+  padding-top:5rem;
   text-align: center;
   font-size: 1.5rem;
   letter-spacing:2px;
 }
 
 .go-to-btn{
+margin-top:5em;
+margin-left:45%;
 width:250px;
-margin-left: 45%;
-transform: translateX(-125px);
 padding: 25px;
 border:none;
 font-family: 'Ubuntu', sans-serif;
@@ -125,16 +139,15 @@ cursor: pointer;
 }
 
 #tutorial-div section{
-  padding:100px;
+
   width:50%;
   display: inline-block;
   float:left;
-
+  height: 100%;
+  overflow: hidden;
 }
 
-#tutorial-div section::after{
-  clear:left;
-}
+
 
 #tutorial-div section p{
   width:50%;
@@ -144,7 +157,8 @@ cursor: pointer;
   font-size: 20px;
   line-height: 28px;
   margin-left:20%;
-  margin-bottom: 100px;
+  padding-top: 1em;
+
 }
 
 #tutorial-div section a{
@@ -158,10 +172,13 @@ opacity:.5;
 }
 
 
-#tutorial-div aside{
-  width:30%;
+#tutorial-div .aside{
+  height: 100%;
+  width:49.9%;
   display: inline-block;
   float:left;
+  border-left:1px solid #2B4162;
+  box-shadow: -1px 0 5px #2B4162;
 }
 
 
@@ -169,6 +186,7 @@ opacity:.5;
   display: block;
   margin:auto;
   margin-left:15%;
+  padding-top: 1em;
   font-size:3rem;
   letter-spacing: 8px;
   color: #0D3B66;
@@ -183,8 +201,13 @@ opacity:.5;
 }
 
 #tutorial-div aside img{
-  display: block;
-  padding:20px 10px;
+
+padding: 3em 0;
+display: block;
+margin-left: auto;
+margin-right: auto;
+
+
 }
 
 .alpha{
@@ -222,4 +245,105 @@ opacity:.5;
   60%{color:yellow;}
   80%{color:green;}
   100%{color:dodgerblue;}
+}
+
+@media screen and (max-width:990px) {
+
+  nav{
+    position: fixed;
+    width:100%;
+  }
+
+  #information-div{
+    overflow:hidden;
+  }
+
+.alpha, .vantage{
+  font-size: 5vw;
+}
+
+  #information-div h1{
+    font-size: 4rem;
+  }
+
+  #information-div h1 span{
+    font-size: 6rem;
+  }
+
+
+  #information-div p{
+    width:99%;
+    font-size:4vw;
+  }
+
+  .go-to-btn{
+    margin:0;
+    font-size: 5vw;
+    padding:1em;
+    margin-left:35vw;
+
+  }
+
+  #tutorial-div{
+    height:600px;
+  }
+
+ #tutorial-div section{
+   clear:both;
+   display: block;
+   width: 100%;
+ }
+
+ #section-head{
+   margin:0;
+   padding:0;
+   font-size:2rem;
+   text-align: center;
+   padding-top: 1rem;
+ }
+
+ #tutorial-div section p{
+   margin:0;
+   padding:0;
+   width:80%;
+   text-align: justify;
+   padding:.5rem;
+   margin:auto;
+   font-size:1rem;
+ }
+
+ #tutorial-div .aside{
+   clear:both;
+   display: none;
+   width: 100%;
+   height:500px;
+ }
+
+ #tutorial-div .aside img{
+   width:50%;
+ }
+
+ .form-div{
+   width: 100%;
+   padding:0;
+   margin:0;
+ }
+
+#search{
+  margin:0;
+  padding: 0;
+}
+
+#search-list{
+  width:100%;
+  margin:0;
+  padding:0;
+}
+
+.searchele-container{
+  width:25vw;
+}
+
+
+
 }
