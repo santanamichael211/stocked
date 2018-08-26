@@ -361,6 +361,9 @@ margin-right: auto;
   border-right: 10px solid #0D3B66;
 }
 
+#modal-content{
+  width:90%;
+}
 footer{
   margin:0;
 }
