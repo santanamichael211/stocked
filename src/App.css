@@ -250,8 +250,7 @@ margin-right: auto;
 @media screen and (max-width:990px) {
 
   nav{
-    position: fixed;
-    width:100%;
+    display: none;
   }
 
   #information-div{
@@ -307,9 +306,9 @@ margin-right: auto;
    padding:0;
    width:80%;
    text-align: justify;
-   padding:.5rem;
+   padding:.7vw;
    margin:auto;
-   font-size:1rem;
+   font-size:3vw;
  }
 
  #tutorial-div .aside{
@@ -342,8 +341,28 @@ margin-right: auto;
 
 .searchele-container{
   width:25vw;
+  height:5em;
 }
 
+#stocklist-container{
+  margin:0;
+  padding:0;
+}
 
+.stockEle{
+  margin:.5em auto;
+  width:98%;
+}
+
+.form-div{
+  width:97%;
+  margin:auto;
+  padding:0;
+  border-right: 10px solid #0D3B66;
+}
+
+footer{
+  margin:0;
+}
 
 }
