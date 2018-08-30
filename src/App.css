@@ -342,6 +342,13 @@ opacity:.5;
 
 @media screen and (max-width:900px) {
 
+  #modal-content{
+    width:275px;
+    left:-50%;
+    top:100px;
+    transform: translateX(-137.5px);
+  }
+
   #information-div{
     width:100%;
   }
@@ -377,7 +384,7 @@ opacity:.5;
 
   #information-div header .information-span p{
     margin:0;
-    padding:1em;
+    padding:0;
     width: 100%;
   }
 

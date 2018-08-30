@@ -250,6 +250,8 @@ class StockList extends Component {
 
   render() {
 
+    //-- create modal
+
     var modal = null;
     if(this.state.message.type ==="error"||this.state.message.type ==="message"){
       var modalColor = "";
