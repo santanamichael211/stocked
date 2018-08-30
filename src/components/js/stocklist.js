@@ -72,6 +72,7 @@ class StockList extends Component {
   axios.get("https://www.alphavantage.co/query?apikey="+key+"&function=TIME_SERIES_INTRADAY&interval=5min&outputsize=full&symbol="+symbol.toUpperCase())
     .then((response) =>{
 
+
       document.getElementById("loader").style.display = "block";
 
       var currentDate = moment().tz("America/New_York");

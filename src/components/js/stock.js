@@ -255,8 +255,14 @@ loadData = () =>{
 
 
     var classes = "";
-    var perChange = (parseFloat(this.props.data.intraday.data[0]["4. close"]) - parseFloat(this.props.data.weekly.data[0]["4. close"]))/parseFloat(this.props.data.weekly.data[0]["4. close"]);
-    perChange *= 100;
+    var perChange = 0;
+    var dailyVals = [];
+    if(this.props.data.intraday.data[0]){
+      perChange = (parseFloat(this.props.data.intraday.data[0]["4. close"]) - parseFloat(this.props.data.weekly.data[0]["4. close"]))/parseFloat(this.props.data.weekly.data[0]["4. close"]);
+      perChange *= 100;
+      dailyVals = [this.props.data.intraday.data[0]["1. open"],this.props.data.intraday.data[0]["2. high"],this.props.data.intraday.data[0]["3. low"],this.props.data.intraday.data[0]["4. close"],this.props.data.intraday.data[0]["5. volume"]]
+    }
+    else{dailyVals = ["NA","NA","NA","NA","NA"]}
    if(perChange>0){ classes += "green"; }
    else {classes+= "red";}
 
@@ -285,16 +291,16 @@ loadData = () =>{
             </tr>
             <tr>
               <td>{this.props.data.symbol}</td>
-              <td>${this.props.data.intraday.data[0]["1. open"]}</td>
-              <td>${this.props.data.intraday.data[0]["2. high"]}</td>
-              <td>${this.props.data.intraday.data[0]["3. low"]}</td>
-              <td>${this.props.data.intraday.data[0]["4. close"]}</td>
-              <td>${this.props.data.intraday.data[0]["5. volume"]}</td>
+              <td>${dailyVals[0]}</td>
+              <td>${dailyVals[1]}</td>
+              <td>${dailyVals[2]}</td>
+              <td>${dailyVals[3]}</td>
+              <td>{dailyVals[4]}</td>
               <td className={classes}>%{perChange.toFixed(3)}</td>
             </tr>
           </tbody>
         </table>
-        <h5 className="time">Date Displayed: {this.props.data.intraday.data[0].name} </h5>
+        <h5 className="time">Date Displayed: {this.props.data.intraday.time} </h5>
       </div>
     );
   }
