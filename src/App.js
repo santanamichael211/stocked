@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import StockList from "./components/stocklist";
+import StockList from "./components/js/stocklist";
 import './App.css';
-import stockImg from "./images/stock.png";
-import searchImg from "./images/search.png"
-import * as Scroll from 'react-scroll';
+import searchsvg from "./images/svgs/search.svg";
+import moneysvg from "./images/svgs/money.svg";
+import graphsvg from "./images/svgs/graph.svg";
+import ReactSVG from 'react-svg'
 import { Link, Events, animateScroll as scroll, scrollSpy} from 'react-scroll'
 
 
@@ -29,38 +30,41 @@ class App extends Component {
   }
 
   render() {
+
     return (
       <div className="App">
-        <nav>
-          <h2 className="dollar">$</h2><h1>tocked</h1>
-        </nav>
         <div id="wrapper">
+          <div id="bg-div"></div>
           <div id="information-div">
-            <h1 id="header"><span>$</span>tocked</h1>
-            <h4 className="header-text">Keep track of your favorite $tocks with ease...</h4>
-            <p className="header-text">$tocked Runs on <a href="https://www.alphavantage.co" className="alphavantage-link"><h3 className="alpha">ALPHA</h3> <h3 className="vantage">VANTAGE's</h3></a> free API to provide you with current intraday stock information. View all of your favorite stocks with an easy to use interface.</p>
-            <br/>
-            <br/>
-                <Link className="go-to-btn" to="anchor" spy={true} smooth={true} duration={1100}>
-                  Start Using
-                </Link>
+            <span id="logo"><h2 className="dollar">$</h2><h1>tocked</h1></span>
+            <header>
+              <span className="information-span">
+                <h2>Stocking Up</h2>
+                <h1>Has just gotten easier!</h1>
+                <p>With the help of <a href="https://www.alphavantage.co" className="alphavantage-link"><h3 className="alpha">ALPHA</h3> <h3 className="vantage">VANTAGE's</h3></a> accurate intraday API, $tocked provides information for all of your favorite stocks with a simple to use interface.</p>
+              </span>
+              <span className="information-span">
+                <h4>Get Started Using $tocked</h4>
+                  <button id="go-to-btn" >
+                    <Link to="anchor" spy={true} smooth={true} duration={1100}>
+                    <h5 id="arrow">&#42780;</h5>
+                    </Link>
+                  </button>
+              </span>
+            </header>
           </div>
         </div>
         <div id="tutorial-div">
-          <section>
-            <span id="section-head"><h2>Using</h2><h1 className="dollar"> $</h1><h2>tocked</h2></span>
-            <p>Using $tocked is very simple. Enter the name of a desired company to be presented with a list of options. Once you have decided the company for which you would like to view stock data, simply click on the name and a panel with its current information will be added. Use the buttons on top of the panel to switch between chart views.</p>
-            <p>Stocks with current values lower than the previous closing date will be displayed with red backgrounds while those doing well will be displayed with green backgrounds. </p>
-            <p>$tocked runs on <a href="https://www.alphavantage.co"><h3 className="alpha">ALPHA</h3> <h3 className="vantage">VANTAGE's</h3></a> free API. Due to limitations there may be a wait time after too many concurrent searches. </p>
-          </section>
-          <section class="aside">
-            <img src={searchImg} alt="example search"></img>
-            <img src={stockImg} alt="example stock"></img>
-          </section>
-      </div>
-        <br/>
-          <div id="anchor">
+          <div id="tutorial-div-bg"></div>
+          <div id="tutorial-div-content">
+            <ul>
+              <li><span><ReactSVG src={searchsvg} svgStyle={{width:50,height:50}}/></span><h1>Search</h1><p>Easily search for any of your favorite stocks with a fast and efficient system. Once you have found your desired stock, simply click on the name to have its chart come up.</p></li>
+              <li><span><ReactSVG src={graphsvg} svgStyle={{width:50,height:50}}/></span><h1>Analyze</h1><p>Once you have your desired stock displayed, use the appropriate buttons to switch between intraday, weekly, monthly, and yearly views. Stocks will also be displayed with either a red or green background according to their performance.</p></li>
+              <li><span><ReactSVG src={moneysvg} svgStyle={{width:50,height:50}}/></span><h1>Invest</h1><p>Once you are ready to make a decision, you can begin to take the appropriate steps to invest in the stock of your choice.</p></li>
+            </ul>
           </div>
+      </div>
+          <div id="anchor"></div>
         <StockList/>
         <footer>
           <h1><i className="fab fa-react"></i>Made With <a href="https://reactjs.org" className="react">React</a></h1> & <a href="https://www.alphavantage.co" className="alphavantage-link"><h3 className="alpha">ALPHA</h3> <h3 className="vantage">VANTAGE</h3></a>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './stock.css';
+import '../css/stock.css';
 import Chart from "chart.js"
 
 class Stock extends Component {
@@ -120,7 +120,6 @@ this.updateCanvas("week");
 }
 
 
-
 //-------------- change points to daily dataset
 setDay = () =>{
   this.updateCanvas("daily");
@@ -196,8 +195,6 @@ loadData = () =>{
     var total = this.props.data.monthly.data.slice()
     var reg = /(-)/gi;
 
-
-
     var dataPoints = 0;
     if(this.props.data.monthly.data.length<30) dataPoints = this.props.data.monthly.data.length;
     else{dataPoints=30;}
@@ -224,7 +221,6 @@ loadData = () =>{
 
     //------ Yearly data points start
   if(this.state.currentDisplay === "year"){
-    var months = ["Jan.","Feb.","Mar.","Apr.","May","Jun.","Jul.","Aug.","Sep.","Oct.","Nov.","Dec."];
 
     var total = this.props.data.monthly.data.slice();
 
@@ -253,10 +249,6 @@ loadData = () =>{
 }
 
 
-
-
-//<button className="delete-button" onClick={this.props.delete.bind(this,this.props.symbol)}>&times;</button>
-
 //-- rendering below
 
   render() {
@@ -275,7 +267,7 @@ loadData = () =>{
           <button className="switch-button" onClick={this.setYear}>1Y</button>
           <button className="switch-button" onClick={this.setMonth}>1M</button>
           <button className="switch-button" onClick={this.setWeek}>5D</button>
-          <button className="switch-button" active onClick={this.setDay}>1D</button>
+          <button className="switch-button" onClick={this.setDay}>1D</button>
           <button className="delete-button" onClick={this.props.delete.bind(this,this.props.data.symbol)}>&times;</button>
         </div>
         <canvas ref="canvas" id="stockChart" className={classes}></canvas>
@@ -293,11 +285,11 @@ loadData = () =>{
             </tr>
             <tr>
               <td>{this.props.data.symbol}</td>
-              <td>{this.props.data.intraday.data[0]["1. open"]}</td>
-              <td>{this.props.data.intraday.data[0]["2. high"]}</td>
-              <td>{this.props.data.intraday.data[0]["3. low"]}</td>
-              <td>{this.props.data.intraday.data[0]["4. close"]}</td>
-              <td>{this.props.data.intraday.data[0]["5. volume"]}</td>
+              <td>${this.props.data.intraday.data[0]["1. open"]}</td>
+              <td>${this.props.data.intraday.data[0]["2. high"]}</td>
+              <td>${this.props.data.intraday.data[0]["3. low"]}</td>
+              <td>${this.props.data.intraday.data[0]["4. close"]}</td>
+              <td>${this.props.data.intraday.data[0]["5. volume"]}</td>
               <td className={classes}>%{perChange.toFixed(3)}</td>
             </tr>
           </tbody>

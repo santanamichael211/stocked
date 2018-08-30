@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Stock from "./stock"
 import axios from "axios";
-import './stocklist.css';
-import symbols from '../json/symbols.json';
-import * as Scroll from 'react-scroll';
-import {animateScroll as scroll, scrollSpy} from 'react-scroll'
+import '../css/stocklist.css';
+import symbols from '../../json/symbols.json';
+import {animateScroll as scroll} from 'react-scroll';
+import moment from "moment-timezone";
+
 
 class StockList extends Component {
 
@@ -21,9 +22,10 @@ class StockList extends Component {
 
   }
 
+
 //--- search company function
   searchStock = () =>{
-    var stockName = document.getElementById("search").value;
+    var stockName = document.getElementById("searchbar").value;
     if(stockName==="" || stockName.length<3){
       this.setState({message:{
         type:"error",
@@ -31,9 +33,7 @@ class StockList extends Component {
       }})
        return;
     }
-
-    var regFilter =  new RegExp('('+stockName+')',"gi");
-
+    var regFilter =  new RegExp('^'+stockName+'.*$',"gi");
 
     var filtered = symbols.filter(function(element){
     return  regFilter.test(element.name);
@@ -68,10 +68,15 @@ class StockList extends Component {
   let key =  process.env.API_KEY;
 
 
-document.getElementById("loader").style.display = "block";
 //--- Api Fetch
   axios.get("https://www.alphavantage.co/query?apikey="+key+"&function=TIME_SERIES_INTRADAY&interval=5min&outputsize=full&symbol="+symbol.toUpperCase())
     .then((response) =>{
+
+      document.getElementById("loader").style.display = "block";
+
+      var currentDate = moment().tz("America/New_York");
+
+      if((currentDate.day()!==6 || currentDate.day()!==0) && (currentDate.hour()<=9 && currentDate.minutes()<30)) currentDate.subtract(1,"day");
 
         if(response.data.Information){
           this.setState({message:{
@@ -83,7 +88,8 @@ document.getElementById("loader").style.display = "block";
         }
 
 
-        if(!response.data["Error Message"]){
+
+        if(response && !response.data["Error Message"]){
                 if(this.state.stocklist.find(e => e.symbol === response.data["Meta Data"]["2. Symbol"])){
                   this.setState({message:{
                     type:"message",
@@ -102,29 +108,27 @@ document.getElementById("loader").style.display = "block";
                     weekly:{
                       data:[]
                     }
-
-
                   };
 
-                  var currentDate = new Date();
-                  if(currentDate.getDay()==6) currentDate.setDate(currentDate.getDate()-1);
-                  if(currentDate.getDay()==0) currentDate.setDate(currentDate.getDate()-2);
+
+                  if(currentDate.day()===6) currentDate.subtract(1,"day");
+                  if(currentDate.day()===0) currentDate.subtract(2,"day");
                   var month, date, year;
-                  month = currentDate.getMonth() + 1;
-                  date = currentDate.getDate();
-                  year = currentDate.getFullYear();
+                  month = currentDate.month() + 1;
+                  date = currentDate.date();
+                  year = currentDate.year();
                   if(month<10) month = "0"+month;
                   if(date<10) date = "0"+date;
                   var firstDate = year +"-"+month+"-"+date;
-                  currentDate.setDate(currentDate.getDate()-1);
+                  currentDate.subtract(1,"day");
 
                   var timeLine = "";
                   for(var i = 0; i<4;i++){
-                    if(currentDate.getDay()===0){currentDate.setDate(currentDate.getDate()-2);}
-                    if(currentDate.getDay()===6){currentDate.setDate(currentDate.getDate()-1);}
-                    month = currentDate.getMonth() + 1;
-                    date = currentDate.getDate();
-                    year = currentDate.getFullYear();
+                    if(currentDate.day()===0){currentDate.subtract(2,"day");}
+                    if(currentDate.day()===6){currentDate.subtract(1,"day");}
+                    month = currentDate.month() + 1;
+                    date = currentDate.date();
+                    year = currentDate.year();
                     if(month<10) month = "0"+month;
                     if(date<10) date = "0"+date;
                     var formattedDate = year +"-"+month+"-"+date;
@@ -134,14 +138,13 @@ document.getElementById("loader").style.display = "block";
                     else{
                       timeLine+=formattedDate+"|";
                     }
-                    currentDate.setDate(currentDate.getDate()-1);
+                    currentDate.subtract(1,"day");
                   }
 
                   var regWeek = new RegExp("("+timeLine+")","i");
                   var regDay = new RegExp("("+firstDate+")","i");
 
                   Object.keys(response.data["Time Series (5min)"]).map((key)=>{
-
                       if(regDay.test(key)){
                         var curData = response.data["Time Series (5min)"][key];
                         curData.name = key;
@@ -152,17 +155,21 @@ document.getElementById("loader").style.display = "block";
                         curData.name = key;
                         data.weekly.data.push(curData)
                       }
-
                   });
 
-
+                  //--- daily data aquired
                 }
                 document.getElementById("search").value = "";
 
         axios.get("https://www.alphavantage.co/query?apikey="+key+"&function=TIME_SERIES_DAILY&outputsize=full&symbol="+symbol.toUpperCase())
             .then(response=>{
+
+              var numPoints = 251;
+              if(Object.keys(response.data["Time Series (Daily)"]).length<251) numPoints = Object.keys(response.data["Time Series (Daily)"]).length - 1;
+
               var monthlyDataArr = [];
-              for(var i=251;i>=0;i--){
+
+              for(var i=numPoints;i>=0;i--){
                 var curData = response.data["Time Series (Daily)"][Object.keys(response.data["Time Series (Daily)"])[i]];
                 curData.name = Object.keys(response.data["Time Series (Daily)"])[i];
                 monthlyDataArr.push(curData);
@@ -176,10 +183,18 @@ document.getElementById("loader").style.display = "block";
                 document.getElementById("loader").style.display = "none";
               });
 
+              //monthly and yearly data aquired
 
             })
             .catch((err)=>{
               console.log(err);
+              this.setState({message:{
+                type:"error",
+                value:err.toString()
+              }})
+              document.getElementById("loader").style.display = "none";
+              return;
+
             });
 
         }
@@ -195,9 +210,17 @@ document.getElementById("loader").style.display = "block";
     })
     .catch((err)=>{
       console.log(err);
+      this.setState({message:{
+        type:"error",
+        value:err.toString()
+      }})
+      document.getElementById("loader").style.display = "none";
+      return;
     });
 
   //---- end of api call
+
+
 
   }
 
@@ -205,6 +228,7 @@ document.getElementById("loader").style.display = "block";
   preventSubmit = (evt) =>{
     evt.preventDefault();
     this.searchStock();
+    document.getElementById("searchbar").blur();
   }
 
 
@@ -225,6 +249,7 @@ document.getElementById("loader").style.display = "block";
 
 
   render() {
+
     var modal = null;
     if(this.state.message.type ==="error"||this.state.message.type ==="message"){
       var modalColor = "";
@@ -254,7 +279,7 @@ document.getElementById("loader").style.display = "block";
     if(this.state.searchedItems.length>0){
       classes = "hide";
       searchList = this.state.searchedItems.map(searchedEle => {
-        return(<div key={searchedEle.symbol} className="searchele-container" style={{borderTopColor:Stock.setColor()}}>
+        return(<div key={searchedEle.symbol} className="searchele-container" style={{borderColor:Stock.setColor()}}>
           <h4 onClick={this.callStock.bind(this,searchedEle.symbol)}>{searchedEle.name}</h4>
         </div>)
       });
@@ -266,15 +291,18 @@ document.getElementById("loader").style.display = "block";
     return (
       <div id="stock-list">
         {modal}
-            <div className="form-div">
-              <i className="fas fa-search"></i>
-              <form onSubmit={this.preventSubmit}>
-              <input id="search" type="text" placeholder="search for name of company..." name="stocks"required/>
-              </form>
-            </div>
-            <div id="search-list">
-              <h4 className={classes}>No Results Available</h4>
-              {searchList}
+            <div id="stock-list-wrapper">
+              <div id="stock-list-bg"></div>
+              <div id="form-div">
+                <form onSubmit={this.preventSubmit}>
+                <input id="searchbar" type="text" placeholder="search for name of company..." name="stocks"/>
+                <div id="search-back"></div>
+                </form>
+              </div>
+              <div id="search-list">
+                <h4 className={"results-text "+classes}>No Results Available</h4>
+                {searchList}
+              </div>
             </div>
             <div id="stocklist-container">
               <h4 className="total">{this.state.stocklist.length}</h4>
