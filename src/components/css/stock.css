@@ -1,153 +1,153 @@
-.stockEle{
+.stockEle {
   display: inline-block;
-  margin:5px;
+  margin: 5px;
   border-radius: 1px;
-  box-shadow: 0px 3px 5px rgba(0,0,0,.3);
-  font-family: 'Stardos Stencil', cursive;
-  width:99%;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+  font-family: "Stardos Stencil", cursive;
+  width: 99%;
 }
 
-.up{
-  color:#4BB543;
+.up {
+  color: #4bb543;
 }
 
-.down{
-  color:#FF2323;
+.down {
+  color: #ff2323;
 }
 
-.green{
-  background-color:rgba(75, 182, 67, 0.4);
+.green {
+  background-color: rgba(75, 182, 67, 0.4);
 }
 
-.red{
-    background-color:rgba(255, 35, 35, 0.4);
+.red {
+  background-color: rgba(255, 35, 35, 0.4);
 }
 
-table{
-  border: solid 1px rgba(0,0,0,.1);
-  font-size:.7em;
-  width:100%;
+table {
+  border: solid 1px rgba(0, 0, 0, 0.1);
+  font-size: 0.7em;
+  width: 100%;
 }
 
-table tbody tr td{
-  transition:box-shadow .5s, background-color .5s, color .4s;
+table tbody tr td {
+  transition: box-shadow 0.5s, background-color 0.5s, color 0.4s;
   text-align: center;
-  border:solid 1px rgba(0,0,0,.3);
+  border: solid 1px rgba(0, 0, 0, 0.3);
   border-radius: 25px;
-  background:rgba(102, 215, 209,.2);
-  font-size:1.2em;
+  background: rgba(102, 215, 209, 0.2);
+  font-size: 1.2em;
 }
 
-.orange{
-  color:rgba(102, 215, 209,1);
+.orange {
+  color: rgba(102, 215, 209, 1);
 }
 
-.top-row{
-  border:solid 1px rgba(0,0,0,.3);
+.top-row {
+  border: solid 1px rgba(0, 0, 0, 0.3);
   border-radius: 25px;
-  background:rgba(255, 231, 110,.4);
-  transition: background .6s;
-  box-shadow:0 2px 5px rgba(0,0,0,.4);}
-
-.top-row:hover{
-  background:rgba(255, 231, 110,1);
+  background: rgba(255, 231, 110, 0.4);
+  transition: background 0.6s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
-#stockChart{
-  height:20em;width:100%;
+.top-row:hover {
+  background: rgba(255, 231, 110, 1);
 }
 
-.time{
-  font-size:.7em;
+#stockChart {
+  height: 20em;
+  width: 100%;
+}
+
+.time {
+  font-size: 0.7em;
   font-weight: 100;
-  margin:0;
+  margin: 0;
   padding: 0;
   text-align: center;
 }
 
-.info-div{
+.info-div {
   position: absolute;
-  height:20px;
+  height: 20px;
   background: transparent;
   width: 100%;
-  font-size:1rem;
+  font-size: 1rem;
 }
 
-.chart-container{
-height:270px;
-border-radius: 5px;
-position: relative;
+.chart-container {
+  height: 270px;
+  border-radius: 5px;
+  position: relative;
 }
 
-.tooltip{
+.tooltip {
   position: relative;
   display: inline-block;
   width: 100%;
 }
 
-.tooltip .tooltiptext{
-    visibility: hidden;
-    width: 60px;
-    opacity: 0;
-    height:0;
-    background-color: rgba(255, 255, 255, 0.90);;
-    color: dodgerblue;
-    text-align: center;
-    bottom:100%;
-    left:50%;
-    margin-left: -30px;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 60px;
+  opacity: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: dodgerblue;
+  text-align: center;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -30px;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity:1;
-    height:50px;
-    -webkit-transition: all 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    transition:  all 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  visibility: visible;
+  opacity: 1;
+  height: 50px;
+  -webkit-transition: all 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 250ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.switch-button{
-  padding:.5em;
+.switch-button {
+  padding: 0.5em;
   float: right;
-  border:none;
-  outline:none;
+  border: none;
+  outline: none;
   text-align: left;
   border-radius: 25px;
-  background-color:rgba(31, 143, 255, 0.2);
-  box-shadow:0px 3px 4px rgba(0,0,0,.3);
-  color:#333;
-  transition:background-color .5s;
+  background-color: rgba(31, 143, 255, 0.2);
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+  color: #333;
+  transition: background-color 0.5s;
   cursor: pointer;
   font-weight: bold;
 }
 
-.delete-button{
-  padding:.5em;
+.delete-button {
+  padding: 0.5em;
   float: left;
-  border:none;
-  outline:none;
+  border: none;
+  outline: none;
   text-align: left;
-  background-color:rgba(255,35,35,.2);
-  color:#333;
-  transition:background-color .5s;
+  background-color: rgba(255, 35, 35, 0.2);
+  color: #333;
+  transition: background-color 0.5s;
   cursor: pointer;
   font-weight: bold;
 }
 
-.delete-button:hover{
-  background-color:rgba(255,35,35,1);
+.delete-button:hover {
+  background-color: rgba(255, 35, 35, 1);
 }
 
-
-.switch-button:focus{
-  background-color:rgba(31, 143, 255, 1);
+.switch-button:focus {
+  background-color: rgba(31, 143, 255, 1);
 }
 
-
-.switch-button:hover{
-  background-color:rgba(31, 143, 255, 1);
+.switch-button:hover {
+  background-color: rgba(31, 143, 255, 1);
 }

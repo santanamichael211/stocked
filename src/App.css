@@ -1,423 +1,430 @@
 .App {
-  margin:0;
-  padding:0;
-  background:white;
-  font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: white;
+  font-family: "Ubuntu", sans-serif;
   width: 100%;
 }
 
-a{
+a {
   text-decoration: none;
-  outline:none;
+  outline: none;
 }
 
-#logo{
-position: absolute;
-top:1em;
-left:1em;
+#logo {
+  position: absolute;
+  top: 1em;
+  left: 1em;
 }
 
-#logo h2{
-  border:7px double rgba(255,255,255,.2);
+#logo h2 {
+  border: 7px double rgba(255, 255, 255, 0.2);
   border-radius: 50%;
-  padding:0 .25em;
+  padding: 0 0.25em;
   display: inline-block;
 }
 
-#logo h2:hover #logo h1{
+#logo h2:hover #logo h1 {
   display: inline-block;
 }
 
-#logo h1{
+#logo h1 {
   display: none;
 }
 
-
-footer{
+footer {
   text-align: center;
   margin: 0;
-  padding:.8em;
-  background:#FAFAFA;
-
+  padding: 0.8em;
+  background: #fafafa;
 }
 
-footer h1{
+footer h1 {
   display: inline;
 }
 
 footer h1 i {
-  padding-right: .5em;
-  color:#00d8ff;
-  font-size:2em;
+  padding-right: 0.5em;
+  color: #00d8ff;
+  font-size: 2em;
   display: inline;
 }
 
-.react{
-  color:#00d8ff;
+.react {
+  color: #00d8ff;
   text-decoration: none;
 }
 
-#wrapper{
+#wrapper {
   width: 100%;
-  height:540px;
-  position:relative;
-  background:linear-gradient(to right,rgba(255, 255, 255,.5),rgb(13, 59, 102,.6));
+  height: 540px;
+  position: relative;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.5),
+    rgb(13, 59, 102, 0.6)
+  );
   z-index: 0;
 }
 
-#bg-div{
-  width:100%;
-  height:100%;
-  background: linear-gradient(to right,rgba(53, 60, 68,.8) , rgba(53, 60, 68,.8) ), url("./images/background.jpg") no-repeat center;
+#bg-div {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      rgba(53, 60, 68, 0.8),
+      rgba(53, 60, 68, 0.8)
+    ),
+    url("./images/background.jpg") no-repeat center;
   background-size: cover;
   z-index: 1;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
-#information-div{
-  height:100%;
-  width:100%;
-  z-index:1;
+#information-div {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 }
 
 #information-div header {
-  margin:0;
-  margin-top:8em;
-  padding:0;
-  z-index:1;
+  margin: 0;
+  margin-top: 8em;
+  padding: 0;
+  z-index: 1;
   line-height: 2em;
-  width:100%;
-  color:#ffffff;
+  width: 100%;
+  color: #ffffff;
 }
 
-#information-div header .information-span{
-  margin:0;
-  padding:0;
+#information-div header .information-span {
+  margin: 0;
+  padding: 0;
   display: inline-block;
   width: 50%;
 }
 
-#information-div header .information-span h2{
-  font-size:2em;
+#information-div header .information-span h2 {
+  font-size: 2em;
   line-height: 2.5em;
-  margin:0;
-  padding:0;
-  margin-left:2em;
+  margin: 0;
+  padding: 0;
+  margin-left: 2em;
 }
 
-#information-div header .information-span h1{
-  margin:0;
-  padding:0;
-  margin-left:1.1em;
-  font-size:3.5em;
-  line-height:1em;
-  color:#66D7D1;
-  width:60%;
-  padding-bottom:.3em;
-  border-bottom:3px solid #66D7D1;
+#information-div header .information-span h1 {
+  margin: 0;
+  padding: 0;
+  margin-left: 1.1em;
+  font-size: 3.5em;
+  line-height: 1em;
+  color: #66d7d1;
+  width: 60%;
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid #66d7d1;
   border-radius: 20px;
-  text-shadow: 0 0 20px rgba(0,0,0,1);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 1);
 }
 
-#information-div header .information-span p{
-  margin:0;
-  padding:0;
+#information-div header .information-span p {
+  margin: 0;
+  padding: 0;
   padding-top: 1em;
-  margin-left:4em;
+  margin-left: 4em;
   font-style: italic;
-  width:65%;
-  color:rgba(255,255,255,.5);
+  width: 65%;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-#information-div header .information-span h4{
-  margin:0;
-  padding:0;
-  font-size:3.5em;
-  line-height:1em;
-  color:#66D7D1;
-  width:100%;
-  text-shadow: 0 0 20px rgba(0,0,0,1);
+#information-div header .information-span h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 3.5em;
+  line-height: 1em;
+  color: #66d7d1;
+  width: 100%;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 1);
 }
 
-
-#go-to-btn{
-width:30px;
-height:30px;
-padding:10px;
-margin:0;
-border:none;
-font-family: 'Ubuntu', sans-serif;
-background:rgba(102, 215, 209,.5);
-color: white;
-cursor: pointer;
-border-radius:50%;
-margin-left:5em;
-margin-top:10px;
-outline:none;
--webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-transition:         all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+#go-to-btn {
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  margin: 0;
+  border: none;
+  font-family: "Ubuntu", sans-serif;
+  background: rgba(102, 215, 209, 0.5);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-left: 5em;
+  margin-top: 10px;
+  outline: none;
+  -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
- #arrow{
-  margin:0;
-  padding:0;
+#arrow {
+  margin: 0;
+  padding: 0;
   font-size: 1.5em;
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition:         all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-#go-to-btn:hover{
-background:rgba(102, 215, 209,1);
-transform:scale(1.4);
+#go-to-btn:hover {
+  background: rgba(102, 215, 209, 1);
+  transform: scale(1.4);
 }
 
-#go-to-btn:hover #arrow{
-color:#FFE76E;
-transform:scale(1.4);
+#go-to-btn:hover #arrow {
+  color: #ffe76e;
+  transform: scale(1.4);
 }
 
-
-.alphavantage-link{
+.alphavantage-link {
   text-decoration: none;
-  color:#42DCA3;
-  transition: opacity .5s;
+  color: #42dca3;
+  transition: opacity 0.5s;
 }
 
-.alphavantage-link:hover{
-opacity:.5;
+.alphavantage-link:hover {
+  opacity: 0.5;
 }
 
-
-.alpha{
+.alpha {
   font-size: 20px;
   line-height: 28px;
   font-weight: bold;
   display: inline;
 }
 
-.vantage{
+.vantage {
   font-size: 20px;
   line-height: 28px;
   display: inline;
   font-weight: lighter;
 }
 
-#tutorial-div{
-  height:570px;
-  width:100%;
-  background-color: #Ffffff;
+#tutorial-div {
+  height: 570px;
+  width: 100%;
+  background-color: #ffffff;
   position: relative;
-  z-index:0;
+  z-index: 0;
 }
 
-#tutorial-div-bg{
-  height:100%;
-  width:100%;
-  background:#66d7d1;
+#tutorial-div-bg {
+  height: 100%;
+  width: 100%;
+  background: #66d7d1;
   -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
   clip-path: polygon(0 0, 0% 100%, 100% 0);
   z-index: -1;
   position: absolute;
 }
 
-#tutorial-div-content{
-  width:100%;
-  height:100%;
+#tutorial-div-content {
+  width: 100%;
+  height: 100%;
   position: absolute;
   z-index: 1;
   position: absolute;
 }
 
-#tutorial-div-content ul{
-  width:50%;
-  margin:auto;
+#tutorial-div-content ul {
+  width: 50%;
+  margin: auto;
   list-style: none;
 }
 
-#tutorial-div-content ul li{
-  width:100%;
-  margin:1em;
-  padding:.5em;
-  border:1px solid rgba(0,0,0,.5);
-  box-shadow: 0 10px 20px rgba(0,0,0,.3);
+#tutorial-div-content ul li {
+  width: 100%;
+  margin: 1em;
+  padding: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 3px;
-  background:rgba(255, 255, 255,.8);
+  background: rgba(255, 255, 255, 0.8);
   -webkit-transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  transition:         all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-#tutorial-div-content ul li:hover{
-    background:rgba(255, 255, 255,1);
-    transform: scalex(1.1);
+#tutorial-div-content ul li:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scalex(1.1);
 }
 
-#tutorial-div-content ul li span{
+#tutorial-div-content ul li span {
   display: inline-block;
-  margin-top:.2em;
-  margin-left:1em;
-  vertical-align:middle;
-  border:1px solid rgba(102, 215, 209,.7);
+  margin-top: 0.2em;
+  margin-left: 1em;
+  vertical-align: middle;
+  border: 1px solid rgba(102, 215, 209, 0.7);
   border-radius: 50%;
-  padding:-2em;
-  background:white;
+  padding: -2em;
+  background: white;
 }
 
-#tutorial-div-content ul li h1{
+#tutorial-div-content ul li h1 {
   display: inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
   font-size: 2em;
-  color:#66d7d1;
-  margin-left:1em;
-  background:#FFE76E;
-  padding-left:10px;
+  color: #66d7d1;
+  margin-left: 1em;
+  background: #ffe76e;
+  padding-left: 10px;
   border-radius: 25px;
-  width:150px;
-
+  width: 150px;
 }
 
-#tutorial-div-content ul li p{
+#tutorial-div-content ul li p {
   font-style: italic;
-  color:rgba(239, 100, 97,.8);
+  color: rgba(239, 100, 97, 0.8);
 }
 
-
-.dollar{
-  display:inline-block;
-  color:dodgerblue;
+.dollar {
+  display: inline-block;
+  color: dodgerblue;
   font-size: 2.5em;
   animation: rainbow 7s linear;
-  animation-iteration-count:infinite;
-  margin:0;
-  padding:0;
+  animation-iteration-count: infinite;
+  margin: 0;
+  padding: 0;
   text-align: left;
 }
 
-@keyframes translate{
-  100%{transform:translateY(15px);}
+@keyframes translate {
+  100% {
+    transform: translateY(15px);
+  }
 }
 
 @keyframes rainbow {
-  0%{color:dodgerblue;}
-  20%{color:red;}
-  40%{color:orange;}
-  60%{color:yellow;}
-  80%{color:green;}
-  100%{color:dodgerblue;}
+  0% {
+    color: dodgerblue;
+  }
+  20% {
+    color: red;
+  }
+  40% {
+    color: orange;
+  }
+  60% {
+    color: yellow;
+  }
+  80% {
+    color: green;
+  }
+  100% {
+    color: dodgerblue;
+  }
 }
 
-@media screen and (max-width:1250px){
-
-  #tutorial-div ul{
+@media screen and (max-width: 1250px) {
+  #tutorial-div ul {
     margin: 0;
-    width:100%;
-    padding:0;
+    width: 100%;
+    padding: 0;
   }
 
-  #tutorial-div ul li{
-    width:95%;
+  #tutorial-div ul li {
+    width: 95%;
     margin: 3em auto;
-    padding:0;
+    padding: 0;
   }
 
-  #tutorial-div ul li p{
-  font-size:.8em;
-  margin:auto;
-  padding:5px;
+  #tutorial-div ul li p {
+    font-size: 0.8em;
+    margin: auto;
+    padding: 5px;
   }
 
-  .searchele-container{
-    width:10vw;
-    height:10vw;
+  .searchele-container {
+    width: 10vw;
+    height: 10vw;
   }
-
-
 }
 
-
-
-@media screen and (max-width:900px) {
-
-  #modal-content{
-    width:275px;
-    left:-50%;
-    top:100px;
+@media screen and (max-width: 900px) {
+  #modal-content {
+    width: 275px;
+    left: -50%;
+    top: 100px;
     transform: translateX(-137.5px);
   }
 
-  #information-div{
-    width:100%;
+  #information-div {
+    width: 100%;
   }
 
-  .stockEle table tbody tr td{
+  .stockEle table tbody tr td {
     font-size: 2.5vw;
   }
 
-  .searchele-container{
-    width:15vw;
-    height:15vw;
+  .searchele-container {
+    width: 15vw;
+    height: 15vw;
   }
 
-
-  #information-div header .information-span{
+  #information-div header .information-span {
     display: block;
     width: 100%;
   }
 
-  #information-div header{
+  #information-div header {
     margin-top: 3em;
     text-align: center;
   }
 
-
-  #information-div header .information-span h1, #information-div header .information-span h4{
-  font-size:2.5em;
-  margin:auto;
-  width: 100%;
-  margin-bottom: .5em;
-  border-radius: 0;
+  #information-div header .information-span h1,
+  #information-div header .information-span h4 {
+    font-size: 2.5em;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 0.5em;
+    border-radius: 0;
   }
 
-  #information-div header .information-span p{
-    margin:0;
-    padding:0;
+  #information-div header .information-span p {
+    margin: 0;
+    padding: 0;
     width: 100%;
   }
 
-  #information-div header .information-span h2{
-    font-size:1.5em;
-      margin:0;
+  #information-div header .information-span h2 {
+    font-size: 1.5em;
+    margin: 0;
   }
 
-  #information-div header .information-span h4{
-      margin:0;
-      width: 100%;
+  #information-div header .information-span h4 {
+    margin: 0;
+    width: 100%;
   }
 
-  #go-to-btn{
-    margin:auto;
-    margin-top:.2em;
-  }
-
-  #tutorial-div ul{
+  #go-to-btn {
     margin: auto;
-    width:100%;
-    padding:0;
+    margin-top: 0.2em;
   }
 
-  #tutorial-div ul li{
-    width:95%;
-    margin:2em .5em;
+  #tutorial-div ul {
+    margin: auto;
+    width: 100%;
+    padding: 0;
   }
 
-  #tutorial-div ul li p{
-  font-size:.8em;
-  text-align: justify;
+  #tutorial-div ul li {
+    width: 95%;
+    margin: 2em 0.5em;
   }
 
-
+  #tutorial-div ul li p {
+    font-size: 0.8em;
+    text-align: justify;
+  }
 }
