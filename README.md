@@ -2,9 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is a simple Single Page App made with react that allows users to search for company names and look up up to date stock information.
 
-
-
-
 Dependencies List:
    <ul>
     <li>axios: "^0.18.0"</li>
@@ -16,6 +13,8 @@ Dependencies List:
     <li>react-scroll: "^1.7.10",</li>
     <li>react-svg: "^6.0.3"</li>
     </ul>
+    
+    ![Alt text](./image1?raw=true)
     
 Currently being hosted on heroku at http://stockedapp.herokuapp.com    
     
