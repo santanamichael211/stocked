@@ -14,7 +14,6 @@ Dependencies List:
     <li>react-svg: "^6.0.3"</li>
     </ul>
     
-    ![Alt text](./image1?raw=true)
     
 Currently being hosted on heroku at http://stockedapp.herokuapp.com    
     
